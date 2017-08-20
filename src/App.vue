@@ -38,6 +38,7 @@ input {
 }
 .submit {
     max-width: 10rem;
+    line-height: 0;
 }
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
