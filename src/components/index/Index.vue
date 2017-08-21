@@ -7,26 +7,28 @@
 </template>
 
 <script>
+    import swlt from 'sweetalert'
     export default {
         data() {
             return {
-                username: '',
-                admission: ''
+                username: '张保乐',
+                admission: '508160162107412'
             }
         },
         methods: {
             submit() {
+                // const urlPrefix = 'http://115.28.50.25/index.php?'
                 const urlPrefix = 'http://jx3536.s1.natapp.link/index.php?'
                 if (!this.username) {
-                    return alert('请输入姓名')
+                    return swlt('请输入姓名', '', 'error')
                 }
                 if (!this.admission || !Number(this.admission)) {
-                    return alert('准考证输入有误')
+                    return swlt('准考证输入有误', '', 'error')
                 }
-                this.$http.get(`${urlPrefix}xm=${encodeURI(this.username)}$zkzh=${this.admission}`).then(res => {
+                this.$http.get(`${urlPrefix}xm=${encodeURI(this.username)}&zkzh=${this.admission}`).then(res => {
                     res = res.body
                     if (res.Status !== 200) {
-                        return alert('输入有误或者用户不存在')
+                        return swlt('暂无数据哦', '', 'error')
                     }
                     this.$store.commit('submit', res.data)
                     this.$router.push('/result')

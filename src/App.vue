@@ -4,6 +4,11 @@
             <img src="./assets/banner.png">
         </div>
         <router-view></router-view>
+        <footer>
+            <p>2017年6月考试成绩将于2017年8月22日上午9点可查</p>
+            <p>2017 ©️ 红岩网校</p>
+            <a href="mailto::web@redrock.team">意见反馈 @红岩网校</a>
+        </footer>
     </div>
 </template>
 
@@ -31,8 +36,9 @@ body {
         max-width: 18rem;
     }
 }
-input {
-    margin: .1rem auto;
+input,
+.result {
+    margin: .3rem auto;
     display: block;
     max-width: 14rem;
 }
@@ -46,5 +52,8 @@ input {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+footer {
+    font-size: .3rem;
 }
 </style>

@@ -6,6 +6,8 @@ import store from './store/index.js'
 
 Vue.use(VueResource)
 
+import '../node_modules/sweetalert/dist/sweetalert.css'
+
 Vue.config.productionTip = false
 
 new Vue({

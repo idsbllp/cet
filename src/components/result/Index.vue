@@ -27,6 +27,7 @@
 </template>
 
 <script>
+    import { ls, lg } from '../../utils'
     export default {
         data() {
             return {
@@ -53,8 +54,16 @@
             }
         },
         mounted() {
-            if (!this.$store.state.result) return this.$router.push('/')
-            this.parseData(this.$store.state.result)
+            let result = this.$store.state.result
+            if (result) {
+                this.parseData(result)
+            } else if (lg('common')) {
+                this.common = lg('common')
+                this.speaking = lg('speaking')
+                this.writting = lg('writting')
+            } else {
+                return this.$router.push('/')
+            }
         },
         methods: {
             parseData(data) {
@@ -70,6 +79,7 @@
                         })
                     }
                 }
+                ls('common', this.common)
             },
             parseSpeakingData(data) {
                 for (let key in data) {
@@ -79,6 +89,7 @@
                         value: data[key]
                     })
                 }
+                ls('speaking', this.speaking)
             },
             parseWrittingData(data) {
                 for (let key in data) {
@@ -88,6 +99,7 @@
                         value: data[key]
                     })
                 }
+                ls('writting', this.writting)
             },
             submit() {
                 this.$router.push('/')
@@ -98,17 +110,17 @@
 
 <style lang="less">
     .result {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
     }
     .list-control {
         margin-top: .3rem;
         width: 100%;
-        height: 1rem;
+        height: .8rem;
         border-bottom: 1px solid #fff;
         list-style: none;
         font-size: .3rem;
-        line-height: 1rem;
+        line-height: .8rem;
     }
     .left, .right {
         float: left;
