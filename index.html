@@ -10,6 +10,35 @@
     </head>
     <body>
         <div id="app"></div>
+        <!-- 引入配置 -->
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="http://hongyan.cqupt.edu.cn/wx-api/share.js"></script>
+
+        <script>
+            WXSHARE.config({debug: false});
+            WXSHARE.ready(function() {
+                var option = {
+                      title: "2017四六级查询",
+                      link: "http://hongyan.cqupt.edu.cn/cet_re/dist/#/",
+                      imgUrl: 'http://hongyan.cqupt.edu.cn/cet_re/src/assets/banner.png',
+                      desc: '2017四六级查询',
+                      type: '',
+                      success: function() {
+                          console.log('分享成功');
+                      },
+                      cancel: function() {
+                          console.log('取消分享');
+                      },
+                  };
+
+                  wx.onMenuShareTimeline(option);
+                  wx.onMenuShareAppMessage(option);
+                  wx.onMenuShareQQ(option);
+                  wx.onMenuShareWeibo(option);
+                  wx.onMenuShareQZone(option);
+            });
+
+        </script>
         <!-- built files will be auto injected -->
     </body>
 </html>
