@@ -41,6 +41,7 @@ input,
     margin: .3rem auto;
     display: block;
     max-width: 14rem;
+    text-align: center;
 }
 .submit {
     max-width: 10rem;

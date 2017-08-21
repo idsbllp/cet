@@ -11,8 +11,8 @@
     export default {
         data() {
             return {
-                username: '张保乐',
-                admission: '508160162107412'
+                username: '',
+                admission: ''
             }
         },
         methods: {
