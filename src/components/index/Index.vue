@@ -17,7 +17,8 @@
         },
         methods: {
             submit() {
-                const urlPrefix = 'http://115.28.50.25/index.php?'
+                const urlPrefix = 'http://hongyan.cqupt.edu.cn/llp.php?'
+                // const urlPrefix = 'http://115.28.50.25/index.php?'
                 // const urlPrefix = 'http://jx3536.s1.natapp.link/index.php?'
                 if (!this.username) {
                     return swlt('请输入姓名', '', 'error')
