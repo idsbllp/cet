@@ -21,10 +21,6 @@
             submit(e) {
                 const target = e.currentTarget
                 target.style.cursor = 'not-allowed'
-                // const urlPrefix = 'http://hongyan.cqupt.edu.cn/llp.php?'
-                // const urlPrefix = 'http://jx3536.s1.natapp.link/index.php?'
-                // const urlPrefix = 'http://115.28.50.25/index.php?'
-                // const urlPrefix = 'http://jx3536.s1.natapp.link/index.php?'
                 const urlPrefix = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/InquiryExam/InquiryExam/getCETScore&'
 
                 if (!this.username) {
@@ -36,13 +32,14 @@
                 this.sub = '查询中...'
                 this.$http.get(`${urlPrefix}xm=${encodeURI(this.username)}&zkzh=${this.admission}`).then(res => {
                     res = res.body
-                    if (res.Status !== 200) {
-                        return swlt(res.Mesaagse, '', 'error')
-                    }
                     this.username = ''
                     this.admission = ''
                     this.sub = '提交'
                     target.style.cursor = 'pointer'
+                    if (res.Status !== 200) {
+                        swlt(res.Message, '', 'error')
+                        return
+                    }
                     this.$store.commit('submit', res.data)
                     this.$router.push('/result')
                 })
